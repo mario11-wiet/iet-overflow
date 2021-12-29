@@ -1,13 +1,11 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Room, Topic, Message
-from .forms import RoomForm, UserForm
+from .models import Room, Topic, Message, User
+from .forms import RoomForm, UserForm, MyUserCreationForm
 from django.db.models import Q
-from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import UserCreationForm
 
 
 # Create your views here.
@@ -22,15 +20,15 @@ def loginPage(response):
         return redirect('home')
 
     if response.method == "POST":
-        username = response.POST.get('username').lower()
+        email = response.POST.get('email').lower()
         password = response.POST.get('password')
 
         try:
-            User.objects.get(username=username)
+            User.objects.get(email=email)
         except:
             messages.error(response, 'User does not exist')
 
-        user = authenticate(response, username=username, password=password)
+        user = authenticate(response, email=email, password=password)
 
         if user is not None:
             login(response, user)
@@ -49,10 +47,9 @@ def logoutUser(response):
 
 
 def registerPage(response):
-    page = 'register'
-    form = UserCreationForm()
+    form = MyUserCreationForm()
     if response.method == 'POST':
-        form = UserCreationForm(response.POST)
+        form = MyUserCreationForm(response.POST)
         if form.is_valid():
             user = form.save(commit=False)
             user.username = user.username.lower()
@@ -179,7 +176,7 @@ def updateUser(response):
     form = UserForm(instance=user)
 
     if response.method == "POST":
-        form = UserForm(response.POST, instance=user)
+        form = UserForm(response.POST,response.FILES, instance=user)
         if form.is_valid():
             form.save()
             return redirect('user-profile', id=user.id)
