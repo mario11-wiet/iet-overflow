@@ -15,5 +15,6 @@ urlpatterns = [
     path('logout/', views.logoutUser, name="logout"),
     path('topics/', views.topicsPage, name="topics"),
     path('activity/', views.activityPage, name="activity"),
+    path('assets/favicon.ico', views.okay),
     path('favicon.ico', views.okay),
 ]
