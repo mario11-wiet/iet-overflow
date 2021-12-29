@@ -11,16 +11,15 @@
   </head>
 
   <body>
-
-    {% include 'navbar.html' %}
-        {% if messages %}
-        <ul class="messages">
-        {% for message in messages %}
-        <li>{{ message }}</li>
-        {% endfor %}
+    {% include 'navbar.html' %} 
+    {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+      <li>{{ message }}</li>
+      {% endfor %}
     </ul>
-    {% endif %}
-    {% block content %}
+    {% endif %} 
+    {% block content %} 
     {% endblock %}
     <script src="{% static 'js/script.js' %}"></script>
   </body>
