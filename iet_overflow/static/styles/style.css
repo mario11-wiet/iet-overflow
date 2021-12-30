@@ -1,15 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
 
 :root {
-  --color-main: #71c6dd;
-  --color-main-light: #e1f6fb;
-  --color-dark: #3f4156;
-  --color-dark-medium: #51546e;
-  --color-dark-light: #696d97;
+  --color-main: #2a9158;
+  --color-main-light: #ffffff;
+  --color-dark: #101010;
+  --color-dark-medium: #000000;
+  --color-dark-light: #567870;
   --color-light: #e5e5e5;
-  --color-gray: #8b8b8b;
-  --color-light-gray: #b2bdbd;
-  --color-bg: #2d2d39;
+  --color-gray: #74c2e1;
+  --color-light-gray: #ffffff;
+  --color-bg: #000000;
   --color-success: #5dd693;
   --color-error: #fc4b0b;
 }
@@ -67,6 +67,7 @@ a {
   max-width: 120rem;
   width: 90%;
   margin: auto;
+
 }
 
 .btn {
