@@ -1,9 +1,7 @@
 {% extends 'main.html' %}
-
 {% block content %}
     <main class="profile-page layout layout--2">
       <div class="container">
-        <!-- Room Start -->
         <div class="room">
           <div class="room__top">
             <div class="room__topLeft">
@@ -15,7 +13,7 @@
                   ></path>
                 </svg>
               </a>
-              <h3>Study Room</h3>
+              <h3>IET-OverFlow</h3>
             </div>
             {% if request.user == room.host %}
             <div class="room__topRight">
@@ -55,7 +53,6 @@
               </a>
             </div>
             {% endif %}
-
           </div>
           <div class="room__box scroll">
             <div class="room__header scroll">
@@ -72,11 +69,6 @@
                   <span>@{{room.host.username}}</span>
                 </a>
               </div>
-              <!-- <div class="room__details">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi, tenetur laudantium? Dicta repellendus
-                rerum consectetur, voluptatem repudiandae eum ea porro cupiditate provident nulla, deserunt, ab ipsum
-                corporis laboriosam deleniti molestias?
-              </div> -->
               <span class="room__topics">{{room.topic}}</span>
             </div>
             <div class="room__conversation">
@@ -127,9 +119,6 @@
             {% endif %}
           </div>
         </div>
-        <!-- Room End -->
-
-        <!--   Start -->
         <div class="participants">
           <h3 class="participants__top">Participants <span>({{participants.count}} Joined)</span></h3>
           <div class="participants__list scroll">
@@ -146,7 +135,6 @@
             {% endfor %}
           </div>
         </div>
-        <!--  End -->
       </div>
     </main>
     <script src="script.js"></script>

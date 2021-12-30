@@ -1,7 +1,5 @@
 {% extends 'main.html' %}
-
 {% block content %}
-
 <main class="create-room layout">
   <div class="container">
     <div class="layout__box">
@@ -15,13 +13,12 @@
               </path>
             </svg>
           </a>
-          <h3>Create/Update Study Room</h3>
+          <h3>Create/Update Room</h3>
         </div>
       </div>
       <div class="layout__body">
         <form class="form" action="" method="POST">
           {% csrf_token %}
-
           <div class="form__group">
             <label for="room_topic">Enter a Topic</label>
             <input required type="text" value="{{room.topic.name}}" name="topic" list="topic-list">
@@ -35,17 +32,14 @@
               </select>
             </datalist>
           </div>
-
           <div class="form__group">
             <label for="room_name">Room Name</label>
             {{form.name}}
           </div>
-
           <div class="form__group">
             <label for="room_description">Room Description</label>
             {{form.description}}
           </div>
-
           <div class="form__action">
             <a class="btn btn--dark" href="{% url 'home' %}">Cancel</a>
             <button class="btn btn--main" type="submit">Submit</button>
@@ -55,5 +49,4 @@
     </div>
   </div>
 </main>
-
 {% endblock %}

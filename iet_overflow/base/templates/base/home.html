@@ -1,16 +1,8 @@
 {% extends 'main.html' %}
-
 {% block content %}
-
-
 <main class="layout layout--3">
     <div class="container">
-    <!-- Topics Start -->
     {% include 'base/topics_component.html' %}
-    
-    <!-- Topics End -->
-
-    <!-- Room List Start -->
     <div class="roomList">
         <div class="mobile-menu">
             <form class="header__search">
@@ -31,7 +23,7 @@
         </div>
         <div class="roomList__header">
         <div>
-            <h2>Study Room</h2>
+            <h2>IET-OverFlow</h2>
             <p>{{room_count}} Rooms available</p>
         </div>
         <a class="btn btn--main" href="{%url 'create-room' %}">
@@ -44,15 +36,9 @@
             Create Room
         </a>
         </div>
-
         {% include 'base/feed_component.html' %}
     </div>
-    <!-- Room List End -->
-
-    <!-- Activities Start -->
     {% include 'base/activity_component.html' %}
-
-    <!-- Activities End -->
     </div>
 </main>
 {% endblock content %}

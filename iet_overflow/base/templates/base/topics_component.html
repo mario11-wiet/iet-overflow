@@ -12,7 +12,6 @@
       <a href="{% url 'home' %}?q={{topic.name}}">{{topic.name}} <span>{{topic.room_set.all.count}}</span></a>
     </li>
     {% endfor %}
-
   </ul>
   <a class="btn btn--link" href="{% url 'topics' %}">
     More
