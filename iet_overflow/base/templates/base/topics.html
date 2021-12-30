@@ -1,5 +1,4 @@
 {% extends 'main.html' %}
-
 {% block content %}
 <main class="create-room layout">
   <div class="container">
@@ -17,7 +16,6 @@
           <h3>Browse Topics</h3>
         </div>
       </div>
-
       <div class="topics-page layout__body">
         <form action="" method="GET" class="header__search">
           <label>
@@ -30,7 +28,6 @@
             <input name="q" placeholder="Search for posts" />
           </label>
         </form>
-
         <ul class="topics__list">
           <li>
             <a href="{% url 'topics' %}" class="active">All <span>{{topics.count}}</span></a>
@@ -45,7 +42,5 @@
     </div>
   </div>
 </main>
-
 <script src="script.js"></script>
 {% endblock content %}
-

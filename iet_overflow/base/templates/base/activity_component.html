@@ -3,7 +3,6 @@
     <h2>Recent Activities</h2>
   </div>
   {% for message in room_messages %}
-
   <div class="activities__box">
     <div class="activities__boxHeader roomListRoom__header">
       <a
@@ -39,13 +38,12 @@
     </div>
     <div class="activities__boxContent">
       <p>
-        replied to post “<a href="{% url 'room' message.room.id %}">{{message.room}}</a>”
+        replied to post “<a href="{% url 'room' message.room.id %}"
+          >{{message.room}}</a
+        >”
       </p>
-      <div class="activities__boxRoomContent">
-        {{message}}
-      </div>
+      <div class="activities__boxRoomContent">{{message}}</div>
     </div>
   </div>
   {% endfor %}
 </div>
-

@@ -11,7 +11,6 @@
       </div>
       <div class="layout__body">
         <h2 class="auth__tagline">Find your study partner</h2>
-
         <form class="form" action="" method="post">
           {% csrf_token %}
           <div class="form__group form__group">
@@ -27,7 +26,6 @@
               placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;"
             />
           </div>
-
           <button class="btn btn--main" type="submit">
             <svg
               version="1.1"
@@ -44,11 +42,9 @@
                 d="M15 21.694v4.306h2v-4.306c0.587-0.348 1-0.961 1-1.694 0-1.105-0.895-2-2-2s-2 0.895-2 2c0 0.732 0.413 1.345 1 1.694z"
               ></path>
             </svg>
-
             Login
           </button>
         </form>
-
         <div class="auth__action">
           <p>Haven't signed up yet?</p>
           <a href="{% url 'register' %}" class="btn btn--link">Sign Up</a>
@@ -66,7 +62,6 @@
       </div>
       <div class="layout__body">
         <h2 class="auth__tagline">Find your study partner</h2>
-
         <form class="form" action="" method="post">
           {% csrf_token %}
           {% for field in form %}
@@ -75,7 +70,6 @@
             {{field}}
           </div>
           {% endfor %}
-
           <button class="btn btn--main" type="submit">
             <svg
               version="1.1"
@@ -92,11 +86,9 @@
                 d="M15 21.694v4.306h2v-4.306c0.587-0.348 1-0.961 1-1.694 0-1.105-0.895-2-2-2s-2 0.895-2 2c0 0.732 0.413 1.345 1 1.694z"
               ></path>
             </svg>
-
             Register
           </button>
         </form>
-
         <div class="auth__action">
           <p>Already signed up yet?</p>
           <a href="{% url 'login' %}" class="btn btn--link">Sign In</a>
@@ -107,4 +99,3 @@
   {% endif %}
 </main>
 {% endblock content %}
-
