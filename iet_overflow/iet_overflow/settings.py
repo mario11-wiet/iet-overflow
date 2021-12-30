@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     "corsheaders",
 ]
 
+INSTALLED_APPS += ["django_createsuperuser"]
+
 AUTH_USER_MODEL = 'base.User'
 
 MIDDLEWARE = [
@@ -82,8 +84,12 @@ WSGI_APPLICATION = 'iet_overflow.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'iet-overflow',
+        'USER': 'sg0311725',
+        'PASSWORD': 'mario',
+        'HOST': 'db',
+        'PORT': '5432',
     }
 }
 
@@ -128,7 +134,6 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/images/'
 
 MEDIA_ROOT = BASE_DIR / 'static/images'
-
 
 # STATIC_ROOT =
 
