@@ -114,8 +114,8 @@ def createRoom(response):
             host=response.user,
             topic=topic,
             name=response.POST.get('name'),
-            description=response.POST.get('description')
-        )
+            description=response.POST.get('description'),
+        ).participants.add(response.user)
         return redirect('home')
 
     context = {'form': form, 'topics': topics}
