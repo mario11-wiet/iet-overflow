@@ -94,9 +94,6 @@ python manage.py runserver
 
 <br />
 
-<br />
-
-<br />
 
 # Mobile 📱 
 
