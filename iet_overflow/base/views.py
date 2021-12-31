@@ -63,11 +63,21 @@ def registerPage(response):
 
 
 def home(response):
-    q = response.GET.get('q') if response.GET.get('q') is not None else ''
-    rooms = Room.objects.filter(Q(topic__name__icontains=q) | Q(name__icontains=q) | Q(description__icontains=q))
+    if response.GET.get('qSearch') is not None:
+        q = response.GET.get('qSearch')
+        rooms = Room.objects.filter(Q(topic__name__icontains=q) | Q(name__icontains=q) | Q(description__icontains=q))
+
+    elif response.GET.get('q') is not None:
+        q = response.GET.get('q')
+        rooms = Room.objects.filter(Q(topic__name__icontains=q))
+
+    else:
+        q = ''
+        rooms = Room.objects.all()
+
+    room_messages = Message.objects.filter(Q(room__topic__name__icontains=q))
     topics = Topic.objects.all()[0:5]
     room_count = rooms.count()
-    room_messages = Message.objects.filter(Q(room__topic__name__icontains=q))
 
     context = {'rooms': rooms,
                'topics': topics,
