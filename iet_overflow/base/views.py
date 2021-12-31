@@ -1,3 +1,5 @@
+from math import ceil
+
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Room, Topic, Message, User
@@ -6,6 +8,8 @@ from django.db.models import Q
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+
+room_on_page = 5
 
 
 # Create your views here.
@@ -63,6 +67,7 @@ def registerPage(response):
 
 
 def home(response):
+    page = int(response.GET.get('page') if response.GET.get('page') is not None else 1)
     if response.GET.get('qSearch') is not None:
         q = response.GET.get('qSearch')
         rooms = Room.objects.filter(Q(topic__name__icontains=q) | Q(name__icontains=q) | Q(description__icontains=q))
@@ -75,14 +80,21 @@ def home(response):
         q = ''
         rooms = Room.objects.all()
 
-    room_messages = Message.objects.filter(Q(room__topic__name__icontains=q))
-    topics = Topic.objects.all()[0:5]
     room_count = rooms.count()
+    page_number = [i for i in
+                   range(page - 2 if page > 2 else page - 1 if page > 1 else 1,
+                         min((page + 3 if page > 2 else page + 4 if page > 1 else page + 5),
+                             (ceil(rooms.count() / room_on_page)) + 1))]
+    page_number.remove(1) if 1 in page_number else None
+    rooms = rooms[(page - 1) * room_on_page:((page - 1) * room_on_page) + room_on_page]
+    room_messages = Message.objects.filter(Q(room__topic__name__icontains=q))[0:5]
+    topics = Topic.objects.all()[0:5]
 
     context = {'rooms': rooms,
                'topics': topics,
                'room_count': room_count,
-               'room_messages': room_messages}
+               'room_messages': room_messages,
+               'page_number': page_number}
     return render(response, 'base/home.html', context)
 
 
@@ -186,7 +198,7 @@ def updateUser(response):
     form = UserForm(instance=user)
 
     if response.method == "POST":
-        form = UserForm(response.POST,response.FILES, instance=user)
+        form = UserForm(response.POST, response.FILES, instance=user)
         if form.is_valid():
             form.save()
             return redirect('user-profile', id=user.id)
@@ -203,5 +215,5 @@ def topicsPage(response):
 
 def activityPage(response):
     room_messages = Message.objects.all()
-    context = {'room_messages':room_messages}
+    context = {'room_messages': room_messages}
     return render(response, 'base/activity.html', context)

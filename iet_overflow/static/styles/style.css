@@ -67,8 +67,37 @@ a {
   max-width: 120rem;
   width: 90%;
   margin: auto;
-
 }
+
+.pagination {
+    margin-top: 8rem;
+    margin-bottom: 10rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .pagination > ul {
+    flex-wrap: wrap;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .pagination .btn {
+    color: var(--color-sub);
+  }
+  
+  .pagination .btn.btn--sub {
+    color: var(--color-light);
+  }
+
+  .pagination .btn{
+      border: 1px solid var(--color-main-light);
+      background-color: var(--color-dark);
+  }
 
 .btn {
   background-color: transparent;
